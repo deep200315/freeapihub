@@ -41,7 +41,7 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex items-center justify-center gap-6 sm:gap-10"
         >
-          <Stat icon={<Zap size={16} className="text-primary-light" />} value="50+" label="Free APIs" />
+          <Stat icon={<Zap size={16} className="text-primary-light" />} value="15+" label="Free APIs" />
           <Stat icon={<TrendingUp size={16} className="text-accent" />} value="Daily" label="Updates" />
           <Stat icon={<Shield size={16} className="text-success" />} value="100%" label="Free to Use" />
         </motion.div>

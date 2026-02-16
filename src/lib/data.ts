@@ -645,6 +645,600 @@ export const apiProviders: APIProvider[] = [
     communityRating: 4.5,
     reviewCount: 134,
   },
+  {
+    id: "nvidia-nim",
+    slug: "nvidia-nim-free-api",
+    name: "NVIDIA NIM",
+    website: "https://build.nvidia.com",
+    description:
+      "NVIDIA NIM (NVIDIA Inference Microservices) provides free API access to state-of-the-art AI models including LLaMA, Mistral, and NVIDIA's own models with GPU-accelerated inference.",
+    category: "AI & Machine Learning",
+    subcategory: "GPU-Accelerated Inference",
+    freeTier: {
+      freeCredits: 1000,
+      duration: "1,000 free credits (no expiry announced)",
+      includes: [
+        "LLaMA 3.1 405B, 70B, 8B",
+        "Mistral Large, Mixtral 8x22B",
+        "NVIDIA Nemotron models",
+        "Code Llama 70B",
+        "Stable Diffusion XL",
+        "Embedding models",
+        "Reranking models",
+      ],
+      excludes: ["Dedicated endpoints", "Custom model deployment", "SLA guarantee"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      rpm: 10,
+      rpd: 5000,
+      tpm: 100000,
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create an NVIDIA account",
+        description: "Go to build.nvidia.com and sign up with your email or existing NVIDIA account.",
+        url: "https://build.nvidia.com",
+      },
+      {
+        order: 2,
+        title: "Browse available models",
+        description: "Explore the model catalog. Each model has a 'Try' button with a playground.",
+      },
+      {
+        order: 3,
+        title: "Generate an API key",
+        description: "Click 'Get API Key' on any model page. You'll receive 1,000 free credits.",
+        url: "https://build.nvidia.com/explore/discover",
+      },
+      {
+        order: 4,
+        title: "Use the OpenAI-compatible endpoint",
+        description: "NIM uses an OpenAI-compatible API format, making it easy to switch from OpenAI.",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL (OpenAI-compatible)",
+        command: `curl https://integrate.api.nvidia.com/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"meta/llama-3.1-70b-instruct","messages":[{"role":"user","content":"Hello!"}],"max_tokens":512}'`,
+        description: "Send a chat completion request using the OpenAI-compatible endpoint.",
+        expectedResult: "JSON response with model completion, same format as OpenAI.",
+      },
+      {
+        order: 2,
+        title: "Check credit balance",
+        description: "Visit your NVIDIA dashboard to see remaining credits.",
+        command: "https://build.nvidia.com/dashboard",
+      },
+    ],
+    docsUrl: "https://docs.api.nvidia.com",
+    pricingUrl: "https://build.nvidia.com/pricing",
+    dashboardUrl: "https://build.nvidia.com/dashboard",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "High RPM", color: "orange" },
+      { label: "GPU Accelerated", color: "purple" },
+      { label: "OpenAI Compatible", color: "blue" },
+    ],
+    hiddenLimitations: [
+      "1,000 credits are consumed at different rates per model (larger models cost more)",
+      "Credits don't renew — once used, you need to pay",
+      "Some models may be removed from free tier without notice",
+      "Rate limits vary by model size",
+    ],
+    abusePolicy:
+      "NVIDIA monitors API usage. Accounts violating ToS or generating harmful content will be suspended.",
+    lastVerified: "2026-02-15",
+    lastUpdated: "2026-02-15",
+    communityRating: 4.4,
+    reviewCount: 187,
+  },
+  {
+    id: "openrouter-free",
+    slug: "openrouter-free-api",
+    name: "OpenRouter",
+    website: "https://openrouter.ai",
+    description:
+      "Unified API gateway to 100+ AI models from OpenAI, Anthropic, Google, Meta, and more. Many models available completely free with community credits.",
+    category: "AI & Machine Learning",
+    subcategory: "AI Model Gateway",
+    freeTier: {
+      duration: "Forever (free models always available)",
+      includes: [
+        "Free models: LLaMA 3.1 8B, Gemma 2 9B, Phi-3, Qwen 2.5",
+        "OpenAI-compatible API format",
+        "Model routing & fallback",
+        "Usage analytics dashboard",
+        "Prompt caching",
+      ],
+      excludes: ["Premium models (GPT-4o, Claude 3.5)", "Priority routing", "Custom rate limits"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      rpm: 20,
+      rpd: 200,
+      tpm: 200000,
+      custom: "Free models: 20 RPM, 200 RPD. Paid models: varies by credit balance.",
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create an OpenRouter account",
+        description: "Sign up at openrouter.ai with email, Google, or GitHub.",
+        url: "https://openrouter.ai/auth",
+      },
+      {
+        order: 2,
+        title: "Get your API key",
+        description: "Go to Keys page and create a new API key.",
+        url: "https://openrouter.ai/keys",
+      },
+      {
+        order: 3,
+        title: "Choose free models",
+        description: "Browse the model list and filter by 'Free' to see all available free models.",
+        url: "https://openrouter.ai/models?q=free",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL",
+        command: `curl https://openrouter.ai/api/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"meta-llama/llama-3.1-8b-instruct:free","messages":[{"role":"user","content":"Hello!"}]}'`,
+        description: "Send a request to a free model via OpenRouter.",
+        expectedResult: "JSON response in OpenAI-compatible format.",
+      },
+    ],
+    docsUrl: "https://openrouter.ai/docs",
+    pricingUrl: "https://openrouter.ai/models",
+    dashboardUrl: "https://openrouter.ai/activity",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "Forever Free", color: "green" },
+      { label: "100+ Models", color: "purple" },
+      { label: "OpenAI Compatible", color: "blue" },
+    ],
+    hiddenLimitations: [
+      "Free models have lower rate limits than paid ones",
+      "Free model availability can change",
+      "Response times may be slower on free tier during peak hours",
+      "Some free models are community-hosted and may have downtime",
+    ],
+    abusePolicy:
+      "OpenRouter monitors for abuse. Excessive requests or harmful content generation will result in account restrictions.",
+    lastVerified: "2026-02-14",
+    lastUpdated: "2026-02-14",
+    communityRating: 4.6,
+    reviewCount: 298,
+  },
+  {
+    id: "groq-free",
+    slug: "groq-free-api",
+    name: "Groq",
+    website: "https://groq.com",
+    description:
+      "Ultra-fast AI inference powered by Groq's custom LPU chips. Free tier offers blazing-fast access to LLaMA, Mixtral, and Gemma models.",
+    category: "AI & Machine Learning",
+    subcategory: "Fast AI Inference",
+    freeTier: {
+      duration: "Forever (with rate limits)",
+      includes: [
+        "LLaMA 3.1 70B & 8B",
+        "Mixtral 8x7B",
+        "Gemma 2 9B",
+        "Whisper Large v3 (speech-to-text)",
+        "LLaVA (vision)",
+        "Tool use / function calling",
+      ],
+      excludes: ["Dedicated capacity", "SLA guarantee", "Priority queue"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      rpm: 30,
+      rpd: 14400,
+      tpm: 6000,
+      custom: "Rate limits vary by model. LLaMA 3.1 70B: 30 RPM, 14,400 RPD.",
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create a Groq account",
+        description: "Sign up at console.groq.com with email or Google.",
+        url: "https://console.groq.com/signup",
+      },
+      {
+        order: 2,
+        title: "Generate an API key",
+        description: "Go to API Keys and create a new key.",
+        url: "https://console.groq.com/keys",
+      },
+      {
+        order: 3,
+        title: "Start using the API",
+        description: "Groq uses an OpenAI-compatible API format for easy integration.",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL",
+        command: `curl https://api.groq.com/openai/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"llama-3.1-70b-versatile","messages":[{"role":"user","content":"Hello!"}]}'`,
+        description: "Send a chat completion request. Notice the blazing-fast response time!",
+        expectedResult: "JSON response in ~200ms — much faster than typical cloud inference.",
+      },
+    ],
+    docsUrl: "https://console.groq.com/docs",
+    pricingUrl: "https://groq.com/pricing",
+    dashboardUrl: "https://console.groq.com",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "Forever Free", color: "green" },
+      { label: "Ultra Fast", color: "orange" },
+      { label: "Best for Students", color: "blue" },
+    ],
+    hiddenLimitations: [
+      "Token per minute limits are relatively low (6,000 TPM for some models)",
+      "Model selection is more limited than OpenAI/Anthropic",
+      "No fine-tuning support",
+      "Occasional capacity issues during peak demand",
+    ],
+    abusePolicy:
+      "Groq monitors usage patterns. Accounts generating harmful content or exceeding fair use will be restricted.",
+    lastVerified: "2026-02-15",
+    lastUpdated: "2026-02-15",
+    communityRating: 4.7,
+    reviewCount: 376,
+  },
+  {
+    id: "together-ai-free",
+    slug: "together-ai-free-api",
+    name: "Together AI",
+    website: "https://together.ai",
+    description:
+      "Run open-source AI models with a generous free tier. Access LLaMA, Mistral, Code Llama, Stable Diffusion, and 100+ models.",
+    category: "AI & Machine Learning",
+    subcategory: "Open Source Model Hosting",
+    freeTier: {
+      freeCredits: 5,
+      duration: "$5 free credits for new users",
+      includes: [
+        "LLaMA 3.1 405B, 70B, 8B",
+        "Mistral Large, Mixtral",
+        "Code Llama 34B",
+        "Stable Diffusion XL",
+        "Embedding models",
+        "Fine-tuning (limited)",
+      ],
+      excludes: ["Dedicated instances", "Priority support", "Custom model hosting"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      rpm: 60,
+      tpm: 100000,
+      custom: "Rate limits vary by model and account tier.",
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create a Together AI account",
+        description: "Sign up at api.together.ai with email or GitHub.",
+        url: "https://api.together.ai/signup",
+      },
+      {
+        order: 2,
+        title: "Get your API key",
+        description: "Your API key is available in the dashboard settings.",
+        url: "https://api.together.ai/settings/api-keys",
+      },
+      {
+        order: 3,
+        title: "Explore available models",
+        description: "Browse 100+ open-source models available through the API.",
+        url: "https://api.together.ai/models",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL",
+        command: `curl https://api.together.xyz/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo","messages":[{"role":"user","content":"Hello!"}]}'`,
+        description: "Send a chat completion request using the OpenAI-compatible endpoint.",
+        expectedResult: "JSON response with model completion.",
+      },
+    ],
+    docsUrl: "https://docs.together.ai",
+    pricingUrl: "https://together.ai/pricing",
+    dashboardUrl: "https://api.together.ai",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "High RPM", color: "orange" },
+      { label: "100+ Models", color: "purple" },
+      { label: "OpenAI Compatible", color: "blue" },
+    ],
+    hiddenLimitations: [
+      "$5 credits don't renew — pay-as-you-go after that",
+      "Larger models (405B) consume credits faster",
+      "Fine-tuning has separate pricing",
+      "Some models may be deprecated without long notice",
+    ],
+    abusePolicy:
+      "Together AI monitors for abuse and harmful content generation. Accounts violating ToS will be suspended.",
+    lastVerified: "2026-02-13",
+    lastUpdated: "2026-02-13",
+    communityRating: 4.5,
+    reviewCount: 203,
+  },
+  {
+    id: "mistral-free",
+    slug: "mistral-ai-free-api",
+    name: "Mistral AI",
+    website: "https://mistral.ai",
+    description:
+      "European AI company offering powerful open and commercial models. Free tier includes access to Mistral Small and open-source models.",
+    category: "AI & Machine Learning",
+    subcategory: "Large Language Models",
+    freeTier: {
+      duration: "Free experiment tier (with limits)",
+      includes: [
+        "Mistral Small (latest)",
+        "Mistral Nemo",
+        "Codestral Mamba",
+        "Embeddings API",
+        "Function calling",
+      ],
+      excludes: ["Mistral Large", "Mistral Medium", "Fine-tuning", "Guardrails API"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      rpm: 2,
+      rpd: 500,
+      tpm: 500000,
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create a Mistral account",
+        description: "Sign up at console.mistral.ai.",
+        url: "https://console.mistral.ai",
+      },
+      {
+        order: 2,
+        title: "Select the free tier",
+        description: "Choose the 'Experiment' plan which is free and doesn't require a credit card.",
+      },
+      {
+        order: 3,
+        title: "Generate an API key",
+        description: "Go to API Keys and create a new key.",
+        url: "https://console.mistral.ai/api-keys",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL",
+        command: `curl https://api.mistral.ai/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Hello!"}]}'`,
+        description: "Send a chat completion request to Mistral Small.",
+        expectedResult: "JSON response with Mistral's completion.",
+      },
+    ],
+    docsUrl: "https://docs.mistral.ai",
+    pricingUrl: "https://mistral.ai/pricing",
+    dashboardUrl: "https://console.mistral.ai",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "EU Based", color: "blue" },
+      { label: "OpenAI Compatible", color: "blue" },
+    ],
+    hiddenLimitations: [
+      "Free tier has very low RPM (2 requests per minute)",
+      "Only smaller models available on free tier",
+      "Rate limits can change without notice",
+      "Free tier data may be used for model improvement",
+    ],
+    abusePolicy:
+      "Mistral AI monitors usage. Accounts violating acceptable use policy will be restricted.",
+    lastVerified: "2026-02-12",
+    lastUpdated: "2026-02-12",
+    communityRating: 4.3,
+    reviewCount: 145,
+  },
+  {
+    id: "huggingface-free",
+    slug: "huggingface-inference-free",
+    name: "Hugging Face Inference",
+    website: "https://huggingface.co",
+    description:
+      "Access thousands of open-source AI models through Hugging Face's free Inference API. Text generation, image generation, embeddings, and more.",
+    category: "AI & Machine Learning",
+    subcategory: "Model Hub & Inference",
+    freeTier: {
+      duration: "Forever (rate limited)",
+      includes: [
+        "Thousands of open-source models",
+        "Text generation (LLaMA, Mistral, Falcon)",
+        "Image generation (Stable Diffusion)",
+        "Embeddings & sentence similarity",
+        "Audio transcription",
+        "Zero-shot classification",
+      ],
+      excludes: ["Dedicated endpoints", "GPU acceleration guarantee", "SLA"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      custom: "Varies by model. Shared infrastructure with queue-based processing.",
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create a Hugging Face account",
+        description: "Sign up at huggingface.co.",
+        url: "https://huggingface.co/join",
+      },
+      {
+        order: 2,
+        title: "Get your access token",
+        description: "Go to Settings → Access Tokens and create a new token.",
+        url: "https://huggingface.co/settings/tokens",
+      },
+      {
+        order: 3,
+        title: "Find a model",
+        description: "Browse models on the Hub and look for the 'Inference API' badge.",
+        url: "https://huggingface.co/models",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL",
+        command: `curl https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct \\
+  -H "Authorization: Bearer YOUR_TOKEN" \\
+  -H "Content-Type: application/json" \\
+  -d '{"inputs":"Hello, how are you?"}'`,
+        description: "Send a text generation request to a model.",
+        expectedResult: "JSON response with generated text.",
+      },
+    ],
+    docsUrl: "https://huggingface.co/docs/api-inference",
+    pricingUrl: "https://huggingface.co/pricing",
+    dashboardUrl: "https://huggingface.co/settings/tokens",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "Forever Free", color: "green" },
+      { label: "Open Source", color: "purple" },
+      { label: "1000+ Models", color: "orange" },
+    ],
+    hiddenLimitations: [
+      "Free inference is shared and can be slow (queued)",
+      "Large models may time out on free tier",
+      "No guaranteed uptime or response time",
+      "Some popular models have long queue times",
+    ],
+    abusePolicy:
+      "Hugging Face monitors for abuse. Excessive automated requests may be throttled.",
+    lastVerified: "2026-02-11",
+    lastUpdated: "2026-02-11",
+    communityRating: 4.5,
+    reviewCount: 567,
+  },
+  {
+    id: "cohere-free",
+    slug: "cohere-free-api",
+    name: "Cohere",
+    website: "https://cohere.com",
+    description:
+      "Enterprise-grade NLP API with a generous free trial tier. Excellent for text generation, embeddings, reranking, and RAG applications.",
+    category: "AI & Machine Learning",
+    subcategory: "NLP & Embeddings",
+    freeTier: {
+      duration: "Forever (trial key with limits)",
+      includes: [
+        "Command R+ (latest)",
+        "Command R",
+        "Embed v3 (multilingual)",
+        "Rerank v3",
+        "RAG with web search",
+        "Function calling",
+      ],
+      excludes: ["Production key", "SLA guarantee", "Priority support", "Custom models"],
+      autoUpgrade: false,
+    },
+    rateLimits: {
+      rpm: 20,
+      custom: "Trial key: 20 RPM, 1,000 calls/month. Production requires paid plan.",
+    },
+    creditCardRequired: false,
+    verificationRequired: ["email"],
+    geoRestrictions: [],
+    signupSteps: [
+      {
+        order: 1,
+        title: "Create a Cohere account",
+        description: "Sign up at dashboard.cohere.com.",
+        url: "https://dashboard.cohere.com/welcome/register",
+      },
+      {
+        order: 2,
+        title: "Get your trial API key",
+        description: "A trial API key is automatically generated. Find it in API Keys section.",
+        url: "https://dashboard.cohere.com/api-keys",
+      },
+      {
+        order: 3,
+        title: "Try the playground",
+        description: "Use the built-in playground to test models before coding.",
+        url: "https://dashboard.cohere.com/playground",
+      },
+    ],
+    testingSteps: [
+      {
+        order: 1,
+        title: "Test with cURL",
+        command: `curl https://api.cohere.com/v2/chat \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"command-r-plus","messages":[{"role":"user","content":"Hello!"}]}'`,
+        description: "Send a chat request to Command R+.",
+        expectedResult: "JSON response with Cohere's completion.",
+      },
+    ],
+    docsUrl: "https://docs.cohere.com",
+    pricingUrl: "https://cohere.com/pricing",
+    dashboardUrl: "https://dashboard.cohere.com",
+    badges: [
+      { label: "No Credit Card", color: "green" },
+      { label: "Forever Free", color: "green" },
+      { label: "Best for RAG", color: "purple" },
+    ],
+    hiddenLimitations: [
+      "Trial key is for non-production use only",
+      "1,000 API calls/month limit on trial",
+      "Production use requires paid plan",
+      "Trial key responses may include attribution requirements",
+    ],
+    abusePolicy:
+      "Cohere monitors trial key usage. Commercial use on trial keys violates ToS.",
+    lastVerified: "2026-02-10",
+    lastUpdated: "2026-02-10",
+    communityRating: 4.4,
+    reviewCount: 178,
+  },
 ];
 
 // ============================================================
