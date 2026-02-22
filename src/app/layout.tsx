@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 import { CompareProvider } from "@/components/compare/CompareContext";
 
 const geistSans = Geist({
@@ -61,15 +62,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-text-primary`}
       >
-        <CompareProvider>
-          <div className="flex min-h-screen">
-            <Sidebar />
-            <div className="flex-1 flex flex-col lg:ml-64">
-              <Header />
-              <main className="flex-1">{children}</main>
-            </div>
-          </div>
-        </CompareProvider>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
