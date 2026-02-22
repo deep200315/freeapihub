@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://freeapihub.com"),
   title: {
     default: "FreeAPIHub — Discover Free API Keys & Tiers",
     template: "%s | FreeAPIHub",

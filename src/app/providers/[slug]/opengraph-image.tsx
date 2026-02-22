@@ -6,8 +6,6 @@
 import { ImageResponse } from "next/og";
 import { getProviderBySlug, getAllProviders } from "@/lib/api-data";
 
-export const runtime = "edge";
-
 export const alt = "FreeAPIHub API Provider";
 export const size = {
   width: 1200,
