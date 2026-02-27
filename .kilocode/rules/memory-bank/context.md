@@ -108,3 +108,6 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 | 2026-02-27 | Added full-app structured logging (middleware + API wrappers), request ID propagation, observability docs, and security audit workflow docs |
 | 2026-02-27 | Added comprehensive GitHub `README.md` documenting features, setup, API endpoints, observability, production testing notes, and troubleshooting |
 | 2026-02-27 | Simplified `README.md` to include only core features and required setup/run/API usage details |
+| 2026-02-27 | Consolidated skill docs to one canonical source per skill by symlinking `.blackbox/skills/*` files to `.agents/skills/*` |
+| 2026-02-27 | Removed `.blackbox/skills/*` skill docs so only `.agents/skills/*` remains as source-of-truth |
+| 2026-02-27 | Removed duplicate skill mirror directories (`.agent`, `.claude`, `.blackbox/skills`) and kept `.agents/skills/*` as the single source-of-truth |
