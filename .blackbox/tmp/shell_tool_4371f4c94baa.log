@@ -1,0 +1,9 @@
+$ next dev
+▲ Next.js 16.1.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.26.96.1:3000
+
+✓ Starting...
+✓ Ready in 2.2s
+ GET /?category=AI%20%26%20Machine%20Learning 200 in 4.8s (compile: 3.3s, render: 1582ms)
+ GET /?creditCard=false 200 in 213ms (compile: 38ms, render: 176ms)

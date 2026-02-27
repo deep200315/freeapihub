@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { filterProviders, apiProviders } from "@/lib/data";
+import { withApiLogging } from "@/lib/observability/with-api-logging";
 
 /**
  * GET /api/providers
@@ -14,7 +15,7 @@ import { filterProviders, apiProviders } from "@/lib/data";
  *   - page: Page number (default 1)
  *   - pageSize: Items per page (default 20)
  */
-export async function GET(request: NextRequest) {
+async function getProviders(request: NextRequest) {
   const { searchParams } = request.nextUrl;
 
   const category = searchParams.get("category") ?? undefined;
@@ -62,7 +63,7 @@ export async function GET(request: NextRequest) {
  * HEAD /api/providers
  * Returns count info in headers
  */
-export async function HEAD() {
+async function headProviders() {
   return new NextResponse(null, {
     headers: {
       "X-Total-Count": apiProviders.length.toString(),
@@ -70,3 +71,6 @@ export async function HEAD() {
     },
   });
 }
+
+export const GET = withApiLogging("providers.list", getProviders);
+export const HEAD = withApiLogging("providers.head", async () => headProviders());

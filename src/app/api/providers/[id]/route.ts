@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getProviderById, getProviderBySlug } from "@/lib/data";
+import { withApiLogging } from "@/lib/observability/with-api-logging";
 
 /**
  * GET /api/providers/:id
  * Get a single provider by ID or slug
  */
-export async function GET(
+async function getProviderByIdOrSlug(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -30,3 +31,5 @@ export async function GET(
     }
   );
 }
+
+export const GET = withApiLogging("providers.detail", getProviderByIdOrSlug);
