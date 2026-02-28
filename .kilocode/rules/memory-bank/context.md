@@ -111,3 +111,6 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 | 2026-02-27 | Consolidated skill docs to one canonical source per skill by symlinking `.blackbox/skills/*` files to `.agents/skills/*` |
 | 2026-02-27 | Removed `.blackbox/skills/*` skill docs so only `.agents/skills/*` remains as source-of-truth |
 | 2026-02-27 | Removed duplicate skill mirror directories (`.agent`, `.claude`, `.blackbox/skills`) and kept `.agents/skills/*` as the single source-of-truth |
+| 2026-02-27 | Added detailed Bun-first usage policy to `AGENTS.md` (install, run scripts, dependency management, audit exceptions, troubleshooting) |
+| 2026-02-28 | Implemented production-grade GitHub Actions CI/CD: dev/staging/main PR gates, Vercel deploy workflow with post-deploy health checks and rollback, Bun-first test/coverage/e2e/lighthouse toolchain, and CI/CD setup guide in `docs/cicd.md` |
+| 2026-02-28 | Switched CI/CD to CI-only mode for Vercel Git Integration (removed action-based deploy workflow), set main branch policy guidance to 1 approval, and updated environment/secret docs for `freeapihub.xyz` + staging URL with no-DB defaults |

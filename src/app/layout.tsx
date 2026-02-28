@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 import { CompareProvider } from "@/components/compare/CompareContext";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://freeapihub.com"),
@@ -44,8 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FreeAPIHub — Discover Free API Keys & Tiers",
-    description:
-      "Find and compare free API keys from top providers.",
+    description: "Find and compare free API keys from top providers.",
   },
   robots: {
     index: true,
@@ -61,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-text-primary`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased bg-surface text-text-primary`}
       >
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>
