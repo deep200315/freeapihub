@@ -20,7 +20,7 @@ describe("api routes integration tests", () => {
 
   it("returns categories with counts", async () => {
     const request = new NextRequest("http://localhost:3000/api/categories");
-    const response = await getCategories(request, undefined);
+    const response = await getCategories(request, { params: {} });
     expect(response.status).toBe(200);
 
     const payload = await response.json();
