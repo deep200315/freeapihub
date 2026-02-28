@@ -10,7 +10,7 @@ describe("api routes integration tests", () => {
     const request = new NextRequest(
       "http://localhost:3000/api/providers?page=1&pageSize=5",
     );
-    const response = await getProviders(request, { params: {} });
+    const response = await getProviders(request, undefined);
     expect(response.status).toBe(200);
 
     const payload = await response.json();
