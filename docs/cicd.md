@@ -106,14 +106,14 @@ Set these in environment secrets (recommended) or repository secrets:
 
 ### staging
 
-- Variable: `NEXT_PUBLIC_STAGING_API_URL` = `https://freeapihub-git-staging-deeptanush-kapakas-projects.vercel.app/`
-- Variable: `STAGING_BASE_URL` = `https://freeapihub-git-staging-deeptanush-kapakas-projects.vercel.app/`
+- Variable: `NEXT_PUBLIC_STAGING_API_URL` = `https://your-staging-url.vercel.app`
+- Variable: `STAGING_BASE_URL` = `https://your-staging-url.vercel.app`
 - Secret: `STAGING_DATABASE_URL` (optional; keep unset if no DB)
 - Other staging app secrets (optional)
 
 ### production
 
-- Variable: `NEXT_PUBLIC_PROD_API_URL` = `https://freeapihub.xyz`
+- Variable: `NEXT_PUBLIC_PROD_API_URL` = `https://your-production-domain.com`
 - Secret: `PROD_DATABASE_URL` (optional; keep unset if no DB)
 - Other production app secrets (optional)
 

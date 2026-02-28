@@ -8,13 +8,27 @@ if (!baseUrl) {
 const endpoints = ["/", "/api/providers", "/api/categories", "/sitemap.xml"];
 
 const run = async () => {
+  const failures = [];
+
   for (const endpoint of endpoints) {
     const url = new URL(endpoint, baseUrl).toString();
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error(`Smoke test failed for ${url} with status ${res.status}`);
-      process.exit(1);
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        failures.push(`- ${url}: HTTP ${res.status}`);
+      }
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : String(error);
+      failures.push(`- ${url}: request failed (${reason})`);
     }
+  }
+
+  if (failures.length > 0) {
+    console.error("Smoke test failures:");
+    for (const failure of failures) {
+      console.error(failure);
+    }
+    process.exit(1);
   }
 
   console.log("Smoke tests passed");

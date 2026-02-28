@@ -18,7 +18,7 @@ Install dependencies and run quality checks:
 
 ```bash
 bun install
-bun run typecheck
+bun run type-check
 bun run lint
 bun run build
 ```
@@ -45,6 +45,6 @@ npm run deps:outdated
 
 ## Suggested CI Policy
 
-- Run `bun run typecheck` and `bun run lint` on every PR.
+- Run `bun run type-check` and `bun run lint` on every PR.
 - Run `npm run audit:prod` on every PR.
 - Block merges on `high` and `critical` vulnerabilities.

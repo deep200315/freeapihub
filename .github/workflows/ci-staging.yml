@@ -214,9 +214,9 @@ jobs:
         env:
           STAGING_BASE_URL: ${{ vars.STAGING_BASE_URL }}
         run: |
-          TARGET_URL="${STAGING_BASE_URL:-https://freeapihub-git-staging-deeptanush-kapakas-projects.vercel.app/}"
+          TARGET_URL="${STAGING_BASE_URL}"
           if [ -z "$TARGET_URL" ]; then
-            echo "No smoke test target URL found. Set staging environment var STAGING_BASE_URL."
+            echo "No smoke test target URL found. Set staging environment variable STAGING_BASE_URL (example: https://your-staging-url.vercel.app)."
             exit 1
           fi
           SMOKE_URL="$TARGET_URL" bun run test:smoke
