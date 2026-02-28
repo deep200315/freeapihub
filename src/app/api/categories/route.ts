@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { getCategories, apiProviders } from "@/lib/data";
+import { withApiLogging } from "@/lib/observability/with-api-logging";
 
 /**
  * GET /api/categories
  * Returns all categories with counts
  */
-export async function GET() {
+async function getCategoriesWithCount() {
   const categories = getCategories();
 
   const data = categories.map((category) => ({
@@ -22,3 +23,5 @@ export async function GET() {
     }
   );
 }
+
+export const GET = withApiLogging("categories.list", async () => getCategoriesWithCount());

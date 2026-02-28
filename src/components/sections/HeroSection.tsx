@@ -2,21 +2,27 @@
 
 import { motion } from "framer-motion";
 import { Zap, TrendingUp, Shield } from "lucide-react";
+import { MatrixDots } from "@/components/effects/MatrixDots";
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden py-12 lg:py-16">
+      {/* Matrix dots background */}
+      <div className="absolute inset-0">
+        <MatrixDots />
+      </div>
+
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-4xl mx-auto text-center px-4">
+      <div className="relative max-w-4xl mx-auto text-center px-4 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary-light">
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary-light pointer-events-auto">
             <Zap size={12} />
             Updated daily with the latest free API tiers
           </div>

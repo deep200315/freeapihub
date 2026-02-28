@@ -33,6 +33,12 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 - [x] **OpenGraph Images**: Dynamic OG images for each API provider page
 - [x] **Collapsible Sidebar**: Foldable sidebar with smooth animations
 - [x] **Category Cleanup**: Commented out empty categories for future expansion
+- [x] **Structured Request Logging**: Middleware + API wrapper emits JSON logs for Vercel/deployment log pipelines
+- [x] **Request Correlation**: `x-request-id` propagated across middleware and API responses
+- [x] **Observability Utilities**: Added shared logger and request classifier (`src/lib/observability/*`)
+- [x] **Security Workflow Docs**: Added Bun setup and dependency audit docs (`docs/security-checks.md`)
+- [x] **Observability Docs**: Added request logging/analytics guide (`docs/observability.md`)
+- [x] **GitHub README**: Added detailed root `README.md` with setup, architecture, routes, API docs, testing, observability, deployment, and troubleshooting
 
 ## Current Structure
 
@@ -47,12 +53,18 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 | `src/app/api/providers/route.ts` | REST: List providers with filters | ✅ |
 | `src/app/api/providers/[id]/route.ts` | REST: Get single provider | ✅ |
 | `src/app/api/categories/route.ts` | REST: List categories | ✅ |
+| `middleware.ts` | Global request intake logging + request ID propagation | ✅ |
+| `src/lib/observability/` | Structured logger, request classification, API logging wrapper | ✅ |
 | `src/components/detail/APIDetailClient.tsx` | Detail page (mobile responsive) | ✅ |
 | `src/components/compare/CompareClient.tsx` | Compare page (mobile cards, desktop table) | ✅ |
 | `src/components/` | All UI components | ✅ |
 | `src/lib/types.ts` | TypeScript type definitions | ✅ |
 | `src/lib/data.ts` | Seed data (15 providers) + filter functions | ✅ |
 | `docs/PRD.md` | Full PRD + architecture docs | ✅ |
+| `docs/observability.md` | Request logging and analytics usage guide | ✅ |
+| `docs/security-checks.md` | Bun setup, audit commands, and CI policy | ✅ |
+| `docs/skills-workflow.md` | Skill discovery, install, and update workflow | ✅ |
+| `README.md` | Comprehensive GitHub documentation for project usage and architecture | ✅ |
 
 ## Tech Stack
 
@@ -71,6 +83,8 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 5. **Glassmorphism UI** — Modern dark theme with blur effects and gradient accents
 6. **Mobile-first** — Card-based layouts on mobile, table on desktop
 7. **Dynamic Filtering** — URL-based filtering (category, search, sort, credit card)
+8. **Structured JSON Logs** — App/API events designed for external per-second aggregation (Vercel logs)
+9. **Stateless Metrics Strategy** — Avoid in-memory counters for serverless accuracy/scalability
 
 ## Next Steps
 
@@ -91,3 +105,9 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 | 2026-02-16 PM | Mobile responsiveness fixes, 7 new providers (NVIDIA NIM, OpenRouter, Groq, Together AI, Mistral, Hugging Face, Cohere), enhanced animations |
 | 2026-02-22 | JSON data architecture: `/data/apis.json` as single source of truth, dynamic rendering, filtering/sorting, SEO functions, future-ready for database migration |
 | 2026-02-22 | SEO infrastructure: Dynamic sitemap.xml, OpenGraph images, collapsible sidebar, category cleanup |
+| 2026-02-27 | Added full-app structured logging (middleware + API wrappers), request ID propagation, observability docs, and security audit workflow docs |
+| 2026-02-27 | Added comprehensive GitHub `README.md` documenting features, setup, API endpoints, observability, production testing notes, and troubleshooting |
+| 2026-02-27 | Simplified `README.md` to include only core features and required setup/run/API usage details |
+| 2026-02-27 | Consolidated skill docs to one canonical source per skill by symlinking `.blackbox/skills/*` files to `.agents/skills/*` |
+| 2026-02-27 | Removed `.blackbox/skills/*` skill docs so only `.agents/skills/*` remains as source-of-truth |
+| 2026-02-27 | Removed duplicate skill mirror directories (`.agent`, `.claude`, `.blackbox/skills`) and kept `.agents/skills/*` as the single source-of-truth |
