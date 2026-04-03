@@ -63,6 +63,9 @@ export default function RootLayout({
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-J074DTES1S"
         />
+        <Script
+          src="https://pl29051843.profitablecpmratenetwork.com/8d/29/4c/8d294c22a40bc8f27caf7fed16ab6c74.js"
+        />
         <Script id="google-analytics">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -75,6 +78,9 @@ gtag('config', 'G-J074DTES1S');`}
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-text-primary`}
       >
         <LayoutWrapper>{children}</LayoutWrapper>
+        <Script
+          src="https://pl29051845.profitablecpmratenetwork.com/07/68/f0/0768f030edf59c43227bdb3a8a5714b8.js"
+        />
       </body>
     </html>
   );
