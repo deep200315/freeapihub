@@ -76,9 +76,11 @@ gtag('config', 'G-J074DTES1S');`}
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-text-primary`}
       >
         <LayoutWrapper>{children}</LayoutWrapper>
+        {/*
         <Script
           src="https://pl29051845.profitablecpmratenetwork.com/07/68/f0/0768f030edf59c43227bdb3a8a5714b8.js"
         />
+        */}
       </body>
     </html>
   );
