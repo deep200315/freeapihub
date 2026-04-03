@@ -35,7 +35,8 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   'params' : {}
 };`}
                 </Script>
-                <Script src="https://www.highperformanceformat.com/25f539099ca67255e81b2b282e96d827/invoke.js" />
+                {/*
+                <Script src="https://www.highperformanceformat.com/25f539099ca67255e81b2b282e96d827/invoke.js" /> */}
               </div>
               <a
                 href="https://www.profitablecpmratenetwork.com/nauuz48ed?key=957828b093d5bb2eb62387add8a95e48"
