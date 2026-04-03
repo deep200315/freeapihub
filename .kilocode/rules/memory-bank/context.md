@@ -39,6 +39,7 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 - [x] **Security Workflow Docs**: Added Bun setup and dependency audit docs (`docs/security-checks.md`)
 - [x] **Observability Docs**: Added request logging/analytics guide (`docs/observability.md`)
 - [x] **GitHub README**: Added detailed root `README.md` with setup, architecture, routes, API docs, testing, observability, deployment, and troubleshooting
+- [x] **Google Tag Manager/Analytics Tag**: Added site-wide Google tag in the root layout head for analytics tracking (`src/app/layout.tsx`)
 
 ## Current Structure
 
@@ -111,3 +112,4 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 | 2026-02-27 | Consolidated skill docs to one canonical source per skill by symlinking `.blackbox/skills/*` files to `.agents/skills/*` |
 | 2026-02-27 | Removed `.blackbox/skills/*` skill docs so only `.agents/skills/*` remains as source-of-truth |
 | 2026-02-27 | Removed duplicate skill mirror directories (`.agent`, `.claude`, `.blackbox/skills`) and kept `.agents/skills/*` as the single source-of-truth |
+| 2026-04-03 | Added the Google tag `G-J074DTES1S` to the global app head in `src/app/layout.tsx` so analytics loads once across all pages |
