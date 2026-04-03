@@ -23,7 +23,7 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         >
           <Header />
           <main className="flex-1">{children}</main>
-          <div className="px-4 lg:px-8 py-6 flex justify-center">
+          <div className="hidden px-4 lg:px-8 py-6 flex justify-center">
             <div className="w-full max-w-[560px] glass rounded-2xl border border-border p-4 flex flex-col items-center gap-3">
               <div className="w-full flex justify-center overflow-x-auto">
                 <Script id="banner-468x60-config">
