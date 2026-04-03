@@ -223,7 +223,7 @@ export default async function OpenGraphImage({ params }: PageProps) {
               : "No Credit Card Required"}
           </span>
           <span style={{ color: "#8b5cf6", fontSize: 18, fontWeight: 600 }}>
-            freeapihub.xyz
+            www.freeapihub.xyz
           </span>
         </div>
       </div>
