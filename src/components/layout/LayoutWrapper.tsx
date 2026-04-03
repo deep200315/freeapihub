@@ -22,9 +22,10 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
           }`}
         >
           <Header />
-          <div className="px-4 lg:px-8 pt-4">
+          <main className="flex-1">{children}</main>
+          <div className="px-4 lg:px-8 py-6">
             <div className="glass rounded-2xl border border-border p-4 flex flex-col items-center gap-3">
-              <div className="max-w-full overflow-x-auto">
+              <div className="w-full flex justify-center overflow-x-auto">
                 <Script id="banner-468x60-config">
                   {`atOptions = {
   'key' : '25f539099ca67255e81b2b282e96d827',
@@ -46,7 +47,6 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
               </a>
             </div>
           </div>
-          <main className="flex-1">{children}</main>
         </div>
       </div>
     </CompareProvider>
