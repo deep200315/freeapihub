@@ -63,9 +63,7 @@ export default function RootLayout({
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-J074DTES1S"
         />
-        <Script
-          src="https://pl29051843.profitablecpmratenetwork.com/8d/29/4c/8d294c22a40bc8f27caf7fed16ab6c74.js"
-        />
+        {/* Popunder temporarily disabled */}
         <Script id="google-analytics">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
