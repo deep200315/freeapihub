@@ -40,6 +40,7 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 - [x] **Observability Docs**: Added request logging/analytics guide (`docs/observability.md`)
 - [x] **GitHub README**: Added detailed root `README.md` with setup, architecture, routes, API docs, testing, observability, deployment, and troubleshooting
 - [x] **Google Tag Manager/Analytics Tag**: Added site-wide Google tag in the root layout head for analytics tracking (`src/app/layout.tsx`)
+- [x] **Robots + Sitemap Hardening**: Added `robots.txt` generation, centralized the canonical site URL, and improved sitemap consistency for crawler submission (`src/app/robots.ts`, `src/app/sitemap.ts`, `src/lib/site.ts`)
 
 ## Current Structure
 
@@ -94,7 +95,6 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 - [ ] Add community review system
 - [ ] Build admin panel for data management
 - [ ] Add email alerts for rate limit changes
-- [ ] Implement sitemap.xml generation
 - [ ] Add Chrome extension
 
 ## Session History
@@ -113,3 +113,4 @@ FreeAPIHub is a production-ready web platform that aggregates and displays infor
 | 2026-02-27 | Removed `.blackbox/skills/*` skill docs so only `.agents/skills/*` remains as source-of-truth |
 | 2026-02-27 | Removed duplicate skill mirror directories (`.agent`, `.claude`, `.blackbox/skills`) and kept `.agents/skills/*` as the single source-of-truth |
 | 2026-04-03 | Added the Google tag `G-J074DTES1S` to the global app head in `src/app/layout.tsx` so analytics loads once across all pages |
+| 2026-04-03 | Added `robots.txt`, centralized site URL helpers, and improved sitemap consistency for crawler/Search Console submission |

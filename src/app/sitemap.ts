@@ -5,44 +5,37 @@
 
 import { MetadataRoute } from "next";
 import { getAllProviders, getDataMetadata } from "@/lib/api-data";
-
-const BASE_URL = "https://freeapihub.com";
+import { SITE_URL, toAbsoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const providers = getAllProviders();
   const metadata = getDataMetadata();
+  const defaultLastModified = new Date(metadata.lastUpdated);
 
-  // Homepage
-  const routes: MetadataRoute.Sitemap = [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: BASE_URL,
-      lastModified: new Date(metadata.lastUpdated),
+      url: SITE_URL,
+      lastModified: defaultLastModified,
       changeFrequency: "daily",
-      priority: 1.0,
+      priority: 1,
+    },
+    {
+      url: toAbsoluteUrl("/compare"),
+      lastModified: defaultLastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
   ];
 
-  // All provider detail pages
-  const providerUrls = providers.map((provider) => ({
-    url: `${BASE_URL}/providers/${provider.slug}`,
-    lastModified: new Date(provider.lastUpdated),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+  const providerRoutes: MetadataRoute.Sitemap = providers
+    .slice()
+    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .map((provider) => ({
+      url: toAbsoluteUrl(`/providers/${provider.slug}`),
+      lastModified: new Date(provider.lastUpdated),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
 
-  // Additional static pages
-  const staticPages = [
-    { path: "/compare", priority: 0.7 },
-  ];
-
-  staticPages.forEach((page) => {
-    routes.push({
-      url: `${BASE_URL}${page.path}`,
-      lastModified: new Date(metadata.lastUpdated),
-      changeFrequency: "weekly",
-      priority: page.priority,
-    });
-  });
-
-  return [...routes, ...providerUrls];
+  return [...staticRoutes, ...providerRoutes];
 }

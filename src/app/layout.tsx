@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,10 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://freeapihub.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "FreeAPIHub — Discover Free API Keys & Tiers",
-    template: "%s | FreeAPIHub",
+    default: `${SITE_NAME} — Discover Free API Keys & Tiers`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
     "Find and compare free API keys from top providers. Detailed rate limits, signup guides, and hidden limitations for AI, Cloud, DevTools, and more.",
@@ -32,18 +33,17 @@ export const metadata: Metadata = {
     "API comparison",
   ],
   openGraph: {
-    title: "FreeAPIHub — Discover Free API Keys & Tiers",
+    title: `${SITE_NAME} — Discover Free API Keys & Tiers`,
     description:
       "Find and compare free API keys from top providers. Detailed rate limits, signup guides, and hidden limitations.",
     type: "website",
     locale: "en_US",
-    siteName: "FreeAPIHub",
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
-    title: "FreeAPIHub — Discover Free API Keys & Tiers",
-    description:
-      "Find and compare free API keys from top providers.",
+    title: `${SITE_NAME} — Discover Free API Keys & Tiers`,
+    description: "Find and compare free API keys from top providers.",
   },
   robots: {
     index: true,
